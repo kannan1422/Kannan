@@ -28,7 +28,7 @@ class Order:
         self.user = user
         self.items = items
 
-# Sample food menu
+# food menu
 menu = {
     1: FoodItem(1, "Red bull", "250ml", 125, 5, 20),
     2: FoodItem(2, "Sambar Idly","1 plate", 150, 20, 3),
@@ -37,11 +37,11 @@ menu = {
     5: FoodItem(5, "Double cheese Margherita","1", 180, 20, 3),
 }
 
-# User and admin data storage (you can replace this with a database)
+# User and admin
 users = {}
 admins = {"admin": "admin123"}  # Admin credentials (replace with a more secure mechanism)
 
-# Order history (you can replace this with a database)
+# Order history 
 order_history = []
 
 # Admin functions
@@ -98,7 +98,7 @@ def update_user_profile(user, full_name, phone_number, email, address, password)
     user.password = password
     users[email] = user
 
-# Main application loop
+# Main app
 while True:
     print("\nWelcome to the Food Ordering App")
     print("1. Admin Login")
