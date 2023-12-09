@@ -1,0 +1,44 @@
+1. Count the number of Salespersons whose name begins with 'a'/'A'.
+
+
+SELECT COUNT(*)
+FROM SalesPeople
+WHERE UPPER(Sname) LIKE 'A%';
+
+2. Display all the Salespersons whose all orders are worth more than Rs. 2000.
+
+
+SELECT S.Snum, S.Sname, S.City, S.Comm
+FROM SalesPeople S
+WHERE NOT EXISTS (
+    SELECT O.Snum
+    FROM Orders O
+    WHERE O.Snum = S.Snum
+    AND O.Amt <= 2000
+);
+
+
+3. Count the number of Salespersons belonging to New York.
+
+
+SELECT COUNT(*)
+FROM SalesPeople
+WHERE City = 'Newyork';
+
+
+4. Display the number of Salespeople belonging to London and belonging to Paris.
+
+
+SELECT City, COUNT(*)
+FROM SalesPeople
+WHERE City IN ('London', 'Paris')
+GROUP BY City;
+
+
+5. Display the number of orders taken by each Salesperson and their date of orders.
+
+
+SELECT O.Snum, S.Sname, COUNT(*) AS NumberOfOrders
+FROM Orders O
+JOIN SalesPeople S ON O.Snum = S.Snum
+GROUP BY O.Snum, S.Sname;
